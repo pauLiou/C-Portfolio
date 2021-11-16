@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <array>
+#include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -9,30 +10,40 @@ class Rover {
 public:
 	int currentLocX; //current coordinate x
 	int currentLocY; //current coordinate y
-	char direction; //direction either left or right
+	char orientation; //compass direction currently facing
 	bool move; // move or not
+	
 };
 
+struct grid {
+	vector<int> gridX;
+	vector<int> gridY;
+};
 
-int rectangle(int sizeX,const int sizeY) { // creating the grid for the rover (dynamic array)
+auto rectangle(int sizeX, int sizeY) { // creating the grid for the rover (dynamic array)
 	
-	int** grid = new int* [sizeY];
-	for (int i = 0; i < sizeY; ++i) { // intialise the size of the matrix grid 
-		grid[i] = new int[sizeX];
+	grid coords();
+    coords().gridX;
+	coords().gridY;
+
+	
+	for (int i = 0; i < sizeX; i++) {
+		coords().gridX[i] = i;
+	}
+	for (int i = 0; i < sizeY; i++) {
+		coords().gridY[i] = i;
 	}
 
-	for (int i = 0; i < sizeY; ++i) {
-		for (int k = 0; k < sizeX; ++k) // fill in the coordinates grid
-			grid[sizeX][sizeY] = i;
-	}
-	
-	return grid[1][3];
+
+	return coords();
 	
 	}
+
 
 
 int main() {
+	auto result = rectangle(3, 5);
 
-	cout << rectangle(3,5) << endl;
+	//cout << rectangle(3,5) << endl;
 	
 }
