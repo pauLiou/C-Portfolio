@@ -5,6 +5,11 @@
 #include <cctype>
 #include <Windows.h>
 
+// TODO
+// try to add rover number to text if possible and not too difficult
+// keep a running record of the final location of each rover
+// do out of bounds rules
+// do cin loops if wrong thing is typed
 
 using namespace std;
 
@@ -29,11 +34,12 @@ struct loc {
 
 auto output() {
 	vector<string> text = { "Please write the size of the grid with a space deliminator (e.g. 4 5): ",
-"The size of the plateau is = ",
-"Please enter the starting location of the rover in integers (for both the X and Y axis) \n followed by a space, followed by the cardinal orientation of the rover (e.g. 1 2 N): ",
-"The current location of the Rover is = ",
-"The Rover is currently facing = ",
-"Please describe how you would like to move with directions(L or R) and movement(M) in one long string of text with no spaces: " };
+		"The size of the plateau is = ",
+		"Please enter the starting location of the rover in integers (for both the X and Y axis) \nFollowed by a space, followed by the cardinal orientation of the rover (e.g. 1 2 N): ",
+		"The current location of the Rover is = ",
+		"The Rover is currently facing = ",
+		"Please describe how you would like to move with directions(L or R) and movement(M) in \none long string of text with no spaces: ",
+		"The new location and orientation of the rover = "};
 
 	return text;
 }
@@ -43,44 +49,12 @@ auto typing(int num) {
 	int x = 0;
 	while (t[num][x] != '\0')
 	{
-		cout << t[num][x];
+		std::cout << t[num][x];
 		Sleep(50);
 		x++;
 	};
 }
-void run(Rover) {
 
-	string movementInput;
-	string orientationInput;
-	Rover rover;
-	typing(0);
-
-	cin >> rover.gridSize[0] >> rover.gridSize[1];
-
-	typing(1);
-
-	cout << rover.gridSize[0] << " " << rover.gridSize[1] << endl;
-
-	typing(2);
-
-	cin >> rover.currentLocX >> rover.currentLocY >> rover.orientation;
-	rover.orientation = toupper(rover.orientation); // convert to uppercase as precaution
-
-	typing(3);
-
-	cout << rover.currentLocX << " " << rover.currentLocY << endl;
-
-	typing(4);
-
-	cout << rover.orientation;
-
-	typing(5);
-
-	cin >> movementInput;
-	for (auto& c : movementInput) c = toupper(c); // convert to uppercase just as precaution (but for string)
-
-	auto rotationResult = rotation(movementInput, rover.orientation, rover.currentLocX, rover.currentLocY);
-}
 auto movement(bool moveBool, char rota, int x, int y) // moveBool = true when set to M, rota = currentOrient, x/y = class currentLoc
 {
 	loc currentLoc = loc();
@@ -166,6 +140,40 @@ auto currentLoc(int x, int y) {
 	return currentCoords;
 }
 
+void run(int num) {
+
+	string movementInput;
+	string orientationInput;
+	for (int i = 0; i < num; i++)
+	{
+		Rover* rover = new Rover[i];
+
+		typing(0);
+		cin >> rover[i].gridSize[0] >> rover[i].gridSize[1];
+
+		typing(1);
+		cout << rover[i].gridSize[0] << " " << rover[i].gridSize[1] << endl;
+
+		typing(2);
+		cin >> rover[i].currentLocX >> rover[i].currentLocY >> rover[i].orientation;
+		rover[i].orientation = toupper(rover[i].orientation); // convert to uppercase as precaution
+
+		typing(3);
+		cout << rover[i].currentLocX << " " << rover[i].currentLocY << endl;
+
+		typing(4);
+		cout << rover[i].orientation << endl;
+
+		typing(5);
+		cin >> movementInput;
+		for (auto& c : movementInput) c = toupper(c); // convert to uppercase just as precaution (but for string)
+		auto rotationResult = rotation(movementInput, rover[i].orientation, rover[i].currentLocX, rover[i].currentLocY);
+
+		typing(6);
+		cin >> rover[i].currentLocX >> rover[i].currentLocY >> rover[i].orientation;
+	}
+
+}
 
 int main() {
 	int totalRovers;
@@ -174,15 +182,5 @@ int main() {
 
 	run(totalRovers);
 	
-
-
-	
-	
-
-	
-	
-	
-	
-
-	
+		
 }
