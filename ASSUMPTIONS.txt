@@ -1,0 +1,10 @@
+For the purposes of this code I have made the following assumptions:
+
+1. That rovers can occupy the same space.
+2. That instructions were worth implementing (with a degree of sanitisation).
+3. That a rover will obey instructions even if that results in it being destroyed.
+
+To run the code:
+
+Open it in your IDE and build it to generate .exe or just compile and run the code in release mode.
+
