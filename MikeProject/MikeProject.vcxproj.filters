@@ -23,5 +23,11 @@
     <ClCompile Include="MarsRover.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Movement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
