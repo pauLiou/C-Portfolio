@@ -7,7 +7,7 @@ using namespace std;
 auto output(); // the output text arrays
 void typing(int num); // the function that allows for the typing animation
 int inputdataInt(); // checking if the input values are integers
-char inputdataChar(); // checking if the input values are chars
+string inputdataChar(); // checking if the input values are chars
 
 
 void run(int num); // the main run function that accesses the terminal/cmd to allow uses to play
@@ -18,7 +18,7 @@ void run(int num); // the main run function that accesses the terminal/cmd to al
 struct loc {
 	int locX;
 	int locY;
-	char curOrient;
+	string curOrient;
 	bool alive;
 };
 struct input {
@@ -27,6 +27,6 @@ struct input {
 	int z;
 };
 
-auto movement(bool moveBool, char rota, int x, int y, int maxX, int maxY); //  function that defines if the rover moves +1/-1 in any direction
-loc rotation(string instruction, char orient, int x, int y, int maxX, int maxY); // function that rotates the direction the rover is facing
-auto currentLoc(int x, int y); // outputs the current location of the rover
+auto movement(string rota, int x, int y, int maxX, int maxY); //  function that defines if the rover moves +1/-1 in any direction
+loc rotation(string instruction, string orient, int x, int y, int maxX, int maxY); // function that rotates the direction the rover is facing
+//auto currentLoc(int x, int y); // outputs the current location of the rover

@@ -26,14 +26,14 @@ void typing(int num) {
 	while (t[num][x] != '\0')
 	{
 		std::cout << t[num][x];
-		Sleep(30);
+		Sleep(1);
 		x++;
 	};
 }
 int inputdataInt() {
-
+	
 	int data;
-	std::cin >> data;
+	cin >> data;
 	while (cin.fail()) {
 		cin.clear();
 		cin.ignore();
@@ -43,10 +43,10 @@ int inputdataInt() {
 	return abs(data);
 }
 
-char inputdataChar() {
-
-	char data;
-	std::cin >> data;
+string inputdataChar() {
+	
+	string data;
+	cin >> data;
 	while (cin.fail()) {
 		cin.clear();
 		cin.ignore();
